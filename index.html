@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FegWix Client</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #2a3d66, #6a8d92); /* Современный градиент */
+            background-size: cover;
+            height: 100%;
+            overflow-x: hidden;
+            text-align: center;
+            scroll-behavior: smooth;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            animation: fadeIn 1s ease-in-out; /* Анимация для всего тела */
+        }
+
+        /* Плавное появление */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: inherit;
+            filter: blur(10px);
+            z-index: -1;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            animation: slideIn 1s ease-out; /* Анимация для контейнера */
+        }
+
+        /* Анимация для появления контейнера */
+        @keyframes slideIn {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .left-container, .right-container {
+            width: 50%;
+            text-align: center;
+            padding-left: 5%;
+            padding-right: 5%;
+            animation: fadeUp 1.5s ease-out; /* Анимация для левой и правой части */
+        }
+
+        /* Анимация для появления элементов в секциях */
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .main-content {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 2rem;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            margin-top: 10vh;
+            animation: fadeUp 1.5s ease-out; /* Анимация для главного контента */
+        }
+
+        a {
+            color: #00d1ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #0078d7;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            animation: scaleIn 1s ease-out; /* Анимация для кнопок */
+        }
+
+        /* Анимация для кнопок */
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        button:hover {
+            background-color: #5a5a5a;
+        }
+
+        footer {
+            color: white;
+            font-size: 0.9rem;
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1;
+            animation: fadeUp 2s ease-out; /* Анимация для футера */
+        }
+
+        #dupe-info {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+            color: white;
+            max-width: 500px;
+            text-align: center;
+            animation: fadeUp 2s ease-out; /* Анимация для секции Dupe Client */
+        }
+
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .purchase-options {
+            font-size: 1.5rem;
+            margin: 20px 0;
+        }
+
+        .purchase-options button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .purchase-options button:hover {
+            background-color: #5a5a5a;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Контейнер для FegWix Client -->
+        <div class="left-container">
+            <div class="main-content">
+                <h1>FegWix Client</h1>
+                <p>Лучший клиент для игры в Minecraft</p>
+                <p>Новости о клиенте: 
+                    <a href="https://t.me/dupehahlotime" target="_blank">Читать в Telegram</a>
+                </p>
+                <button id="openModalBtn">Приобрести</button>
+            </div>
+        </div>
+
+        <!-- Контейнер для Dupe Client -->
+        <div class="right-container">
+            <div id="dupe-info">
+                <h2>Dupe Client</h2>
+                <p>Лучший дюп клиент в своем роде!</p>
+                <p>Новости о Dupe Client: 
+                    <a href="https://t.me/dupehahlotime" target="_blank">Читать в Telegram</a>
+                </p>
+                <!-- Кнопка ведет в ваш Telegram -->
+                <button onclick="window.location.href='https://t.me/Cvalzzz'">Приобрести навсегда</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Информация о создателе -->
+    <footer>
+        <p>Создатель: <a href="https://t.me/cvalzzz" target="_blank">@cvalzzz</a></p>
+    </footer>
+
+    <!-- Модальное окно для покупки -->
+    <div id="purchaseModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Выберите период подписки</h2>
+            <div class="purchase-options">
+                <button onclick="window.location.href='https://t.me/cvalzzz'">На месяц</button>
+                <button onclick="window.location.href='https://t.me/cvalzzz'">На 3 месяца</button>
+                <button onclick="window.location.href='https://t.me/cvalzzz'">На год</button>
+                <button onclick="window.location.href='https://t.me/cvalzzz'">Навсегда</button>
+            </div>
+            <button id="backButton">Назад</button>
+        </div>
+    </div>
+
+    <script>
+        // Модальное окно для покупки
+        const purchaseModal = document.getElementById("purchaseModal");
+        const openModalBtn = document.getElementById("openModalBtn");
+        const backButton = document.getElementById("backButton");
+
+        // Открытие модального окна для покупки
+        openModalBtn.onclick = function() {
+            purchaseModal.style.display = "block";
+        }
+
+        // Закрытие модального окна покупки
+        purchaseModal.querySelector('.close').onclick = function() {
+            purchaseModal.style.display = "none";
+        }
+
+        // Закрытие модального окна, если кликнут вне окна
+        window.onclick = function(event) {
+            if (event.target == purchaseModal) {
+                purchaseModal.style.display = "none";
+            }
+        }
+
+        // Кнопка "Назад" для возврата на главное меню
+        backButton.onclick = function() {
+            purchaseModal.style.display = "none"; // Закрываем модальное окно
+        }
+    </script>
+
+</body>
+</html>
